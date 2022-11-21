@@ -1,0 +1,16 @@
+{
+    "dev": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "flower_shop_dev",
+      "user": "shop_user",
+      "password": "password123"
+    },
+    "test": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "flower_shop_test",
+      "user": "test_user",
+      "password": "password123"
+    }
+  }
