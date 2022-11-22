@@ -53,9 +53,11 @@ Flower Shop Backend API built using Node.js, Express, and PostgreSQL. It allows 
 - All tests of the routes in the dashboard file are tested within orderSpec in routes/test.
 
 - According to the project specification, `.env` file must be in the.`gitignore` for security. However, `.env` variables can be found below for reviewing purposes.
-PGHOST='localhost'
+
 
 ***.env***
+>     PGHOST='localhost'
+>
 >     PGUSER=shop_user
 >     
 >     PG_TEST_USER=test_user
