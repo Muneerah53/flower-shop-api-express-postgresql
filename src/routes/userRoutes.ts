@@ -11,7 +11,7 @@ const userRouter: Router = Router();
 
 userRouter.get('/', verifyAuthToken, index);
 userRouter.get('/:userID', verifyAuthToken, show);
-userRouter.post('/', verifyAuthToken, create);
+userRouter.post('/', create);
 userRouter.post('/authenticate', authenticate);
 
 export default userRouter;
