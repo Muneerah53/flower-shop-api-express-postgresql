@@ -8,7 +8,7 @@ const index = async (req: Request, res: Response): Promise<void> => {
         const flowers = await Flowers.index();
         res.json(flowers);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -19,7 +19,7 @@ const show = async (req: Request, res: Response): Promise<void> => {
         const flower = await Flowers.show(id);
         res.json(flower);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -34,7 +34,7 @@ const create = async (req: Request, res: Response): Promise<void> => {
         const newFlower = await Flowers.create(flower);
         res.json(newFlower);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -50,7 +50,7 @@ const update = async (req: Request, res: Response): Promise<void> => {
         const updatedFlower = await Flowers.update(flower);
         res.json(updatedFlower);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -61,7 +61,7 @@ const remove = async (req: Request, res: Response): Promise<void> => {
         const deletedFlower = await Flowers.delete(id);
         res.json(deletedFlower);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -72,7 +72,7 @@ const flowersByColor = async (req: Request, res: Response): Promise<void> => {
         const foundFlowers = await Flowers.flowersByColor(color);
         res.json(foundFlowers);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };

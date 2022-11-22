@@ -86,9 +86,9 @@ export class UserModel {
             }
 
             return null;
-        } catch (err) {
+        } catch (error) {
             throw new Error(
-                `Could not authenticate user ${u.id}. Error: ${err}`
+                `Could not authenticate user ${u.id}. Error: ${error}`
             );
         }
     }

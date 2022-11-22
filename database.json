@@ -1,16 +1,16 @@
 {
     "dev": {
       "driver": "pg",
-      "host": "127.0.0.1",
-      "database": "flower_shop_dev",
-      "user": "shop_user",
-      "password": "password123"
+      "host": { "ENV":  "PGHOST"},
+      "database": { "ENV":  "PGDATABASE"},
+      "user": { "ENV":  "PGUSER"},
+      "password": { "ENV":  "PGPASSWORD"}
     },
     "test": {
       "driver": "pg",
-      "host": "127.0.0.1",
-      "database": "flower_shop_test",
-      "user": "test_user",
-      "password": "password123"
+      "host": { "ENV":  "PGHOST"},
+      "database": { "ENV":  "PG_TEST_DATABASE"},
+      "user": { "ENV":  "PG_TEST_USER"},
+      "password": { "ENV":  "PGPASSWORD"}
     }
   }

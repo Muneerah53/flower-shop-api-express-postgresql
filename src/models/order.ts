@@ -17,8 +17,8 @@ export class OrderModel {
             conn.release();
 
             return result.rows;
-        } catch (err) {
-            throw new Error(`Could not get orders. Error: ${err}`);
+        } catch (error) {
+            throw new Error(`Could not get orders. Error: ${error}`);
         }
     }
 
@@ -32,8 +32,8 @@ export class OrderModel {
             conn.release();
 
             return result.rows[0];
-        } catch (err) {
-            throw new Error(`Could not find order ${id}. Error: ${err}`);
+        } catch (error) {
+            throw new Error(`Could not find order ${id}. Error: ${error}`);
         }
     }
 
@@ -50,8 +50,8 @@ export class OrderModel {
             conn.release();
 
             return order;
-        } catch (err) {
-            throw new Error(`Could not add new order. Error: ${err}`);
+        } catch (error) {
+            throw new Error(`Could not add new order. Error: ${error}`);
         }
     }
 
@@ -85,10 +85,9 @@ export class OrderModel {
             conn.release();
 
             return order;
-        } catch (err) {
-
+        } catch (error) {
             throw new Error(
-                `Could not add flower ${flowerId} to order ${orderId}: ${err}`
+                `Could not add flower ${flowerId} to order ${orderId}: ${error}`
             );
         }
     }
@@ -104,9 +103,9 @@ export class OrderModel {
             conn.release();
 
             return result.rows[0];
-        } catch (err) {
+        } catch (error) {
             throw new Error(
-                `Could not find order by user ${uid}. Error: ${err}`
+                `Could not find order by user ${uid}. Error: ${error}`
             );
         }
     }
@@ -121,8 +120,8 @@ export class OrderModel {
             conn.release();
 
             return result.rows;
-        } catch (err) {
-            throw new Error(`unable get orders: ${err}`);
+        } catch (error) {
+            throw new Error(`unable get orders: ${error}`);
         }
     }
 }

@@ -9,7 +9,7 @@ const index = async (req: Request, res: Response): Promise<void> => {
         const users = await Users.index();
         res.json(users);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -20,7 +20,7 @@ const show = async (req: Request, res: Response): Promise<void> => {
         const user = await Users.show(id);
         res.json(user);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -39,7 +39,7 @@ const create = async (req: Request, res: Response): Promise<void> => {
         );
         res.json({ ...user, token });
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -63,9 +63,9 @@ const authenticate = async (req: Request, res: Response): Promise<void> => {
             );
             res.json(token);
         }
-    } catch (err) {
-        res.status(401);
-        res.json(err);
+    } catch (error) {
+        res.status(500);
+        res.json(error);
     }
 };
 export { index, show, create, authenticate };

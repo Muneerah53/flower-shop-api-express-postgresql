@@ -14,8 +14,8 @@ export class DashboardQueries {
             conn.release();
 
             return result.rows;
-        } catch (err) {
-            throw new Error(`unable get flowers by popularity: ${err}`);
+        } catch (error) {
+            throw new Error(`unable get flowers by popularity: ${error}`);
         }
     }
 
@@ -36,10 +36,8 @@ export class DashboardQueries {
             conn.release();
 
             return result.rows;
-        } catch (err) {
-            throw new Error(`unable get flowers and orders: ${err}`);
+        } catch (error) {
+            throw new Error(`unable get flowers and orders: ${error}`);
         }
     }
-
-
 }

@@ -9,7 +9,7 @@ const index = async (req: Request, res: Response): Promise<void> => {
         const orders = await Orders.index(uid);
         res.json(orders);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -22,7 +22,7 @@ const show = async (req: Request, res: Response): Promise<void> => {
         const order = await Orders.show(id, uid);
         res.json(order);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -35,7 +35,7 @@ const showUserOrder = async (req: Request, res: Response): Promise<void> => {
 
         res.json(order);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -49,7 +49,7 @@ const create = async (req: Request, res: Response): Promise<void> => {
         const newOrder = await Orders.create(order);
         res.json(newOrder);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -64,7 +64,7 @@ const update = async (req: Request, res: Response): Promise<void> => {
         const completedOrder = await Orders.update(order);
         res.json(completedOrder);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
@@ -81,9 +81,9 @@ const addFlower = async (_req: Request, res: Response) => {
             flowerID
         );
         res.json(addedProduct);
-    } catch (err) {
-        res.status(400);
-        res.json(err);
+    } catch (error) {
+        res.status(500);
+        res.json(error);
     }
 };
 
@@ -93,7 +93,7 @@ const completedOrders = async (req: Request, res: Response): Promise<void> => {
         const completedOrders = await Orders.completedOrders(uid);
         res.json(completedOrders);
     } catch (error) {
-        res.status(400);
+        res.status(500);
         res.json(error);
     }
 };
