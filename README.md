@@ -46,6 +46,12 @@ Flower Shop Backend API built using Node.js, Express, and PostgreSQL. It allows 
 
 4. For testing, Run `yarn test` to start testing the routes and models.
 
+
+**Ports:**
+- API port: 3000
+- PostgreSQL port: 5432 (default)
+
+
   ---
 
 ### Notes:
