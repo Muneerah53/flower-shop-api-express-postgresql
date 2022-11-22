@@ -1,5 +1,4 @@
 import supertest from 'supertest';
-import jwt from 'jsonwebtoken';
 import { User, UserModel } from '../../models/user';
 import app from '../../server';
 import { Flower, FlowerModel } from '../../models/flower';
@@ -16,13 +15,29 @@ describe('Test Flower endpoints responses', () => {
         price: 120,
     };
 
-    beforeAll(async () => {
-        const user = await userModel.create({
-            first_name: 'Test',
-            last_name: 'User',
-            password: 'password123',
+    const flowerUser: User = {
+        first_name: 'Test',
+        last_name: 'User',
+        password: 'password123',
+    };
+
+    describe('Initialize token', () => {
+        it('should create user', async () => {
+            const user = await userModel.create(flowerUser);
+            flowerUser.id = user.id;
+            expect(user.first_name).toEqual(flowerUser.first_name);
+            expect(user.last_name).toEqual(flowerUser.last_name);
         });
-        token = jwt.sign({ user: user }, process.env.TOKEN_SECRET as string);
+
+        it('should authenticate user', async () => {
+            const response = await request
+                .post('/users/authenticate')
+                .set('Content-Type', 'application/json')
+                .send(flowerUser);
+            expect(response.status).toBe(200);
+            token = response.body;
+        });
+
     });
 
     describe('Test Flower methods endpoints responses', () => {

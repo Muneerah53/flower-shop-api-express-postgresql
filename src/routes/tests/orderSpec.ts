@@ -1,5 +1,4 @@
 import supertest from 'supertest';
-import jwt from 'jsonwebtoken';
 import app from '../../server';
 import { User, UserModel } from '../../models/user';
 import { Order } from '../../models/order';
@@ -23,19 +22,39 @@ describe('Test Order endpoints responses', () => {
         price: 100,
     };
 
-    beforeAll(async () => {
-        const user = await userModel.create({
-            first_name: 'Test',
-            last_name: 'User',
-            password: 'password123',
+    const orderUser: User = {
+        first_name: 'Test',
+        last_name: 'User',
+        password: 'password123',
+    };
+
+    describe('Initialize flower and token', () => {
+        it('should create flower for order', async () => {
+            const f = await flowerModel.create(orderFlower);
+            orderFlower.id = f.id;
+            expect(f).toEqual(orderFlower);
         });
 
-        const f = await flowerModel.create(orderFlower);
-        orderFlower.id = f.id;
-        token = jwt.sign({ user: user }, process.env.TOKEN_SECRET as string);
+        it('should create user for order', async () => {
+            const user = await userModel.create(orderUser);
+            orderUser.id = user.id;
+            expect(user.first_name).toEqual(orderUser.first_name);
+            expect(user.last_name).toEqual(orderUser.last_name);
+        });
 
-        testOrder.user_id = user.id!.toString();
-        route = `/users/${testOrder.user_id}/orders`;
+        it('should authenticate user', async () => {
+            const response = await request
+                .post('/users/authenticate')
+                .set('Content-Type', 'application/json')
+                .send(orderUser);
+            expect(response.status).toBe(200);
+            token = response.body;
+        });
+
+        afterAll(() => {
+            testOrder.user_id = orderUser.id!.toString();
+            route = `/users/${testOrder.user_id}/orders`;
+        });
     });
 
     describe('Test Order methods endpoints responses', () => {
